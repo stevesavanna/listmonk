@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Szkennelési intervallum",
     "settings.bounces.scanIntervalHelp": "Időköz, amelyen belül a visszapattanó postafiókot kell vizsgálni (s a másodperc, m a perc).",
     "settings.bounces.sendgridKey": "SendGrid Kulcs",
+    "settings.bounces.email": "E-mail cím a visszapattanások követéséhez",
+    "settings.bounces.emailHelp": "Hagydja üresen, ha az alapértelmezett 'feladó'-t akarja használni a visszapattanásokhoz is.",
     "settings.bounces.type": "Típus",
     "settings.bounces.username": "Felhasználó név",
     "settings.confirmRestart": "Győződjön meg arról, hogy a futó kampányok szünetelnek. Újrakezd ?",

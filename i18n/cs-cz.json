@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Interval skenování",
     "settings.bounces.scanIntervalHelp": "Interval, ve kterém by se poštovní schránka v případě nedoručitelnosti měla skenovat na nedoručitelnost (s - sekundy, m - minuty).",
     "settings.bounces.sendgridKey": "Klíč SendGrid",
+    "settings.bounces.email": "E-mail address for bounce tracking",
+    "settings.bounces.emailHelp": "Leave blank if you want to use the default 'from' e-mail for bounces as well.",
     "settings.bounces.type": "Typ",
     "settings.bounces.username": "Jméno uživatele",
     "settings.confirmRestart": "Ujistěte se, že jsou běžící kampaně pozastavené. Restartovat?",

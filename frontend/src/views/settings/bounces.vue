@@ -77,6 +77,12 @@
       <div class="block box" v-for="(item, n) in data['bounce.mailboxes']" :key="n">
         <div class="columns">
           <div class="column" :class="{'disabled': !item.enabled}">
+            <b-field :label="$t('settings.bounces.email')" expanded
+                     label-position="on-border" :message="$t('settings.bounces.emailHelp')">
+              <b-input v-model="item.email" name="email"
+                       placeholder="bounce@listmonk.yoursite.com"
+                       pattern="(.+?)@(.+?)" :maxlength="300" />
+            </b-field>
             <div class="columns">
               <div class="column is-3">
                 <b-field :label="$t('settings.bounces.type')" label-position="on-border">

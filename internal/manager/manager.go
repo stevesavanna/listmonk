@@ -131,6 +131,8 @@ type Config struct {
 	// (exposed to the internet, private etc.) where only one does campaign
 	// processing while the others handle other kinds of traffic.
 	ScanCampaigns bool
+
+	BounceEmail   string
 }
 
 type msgError struct {
@@ -330,26 +332,32 @@ func (m *Manager) worker() {
 				Campaign:    msg.Campaign,
 			}
 
-			h := textproto.MIMEHeader{}
-			h.Set(models.EmailHeaderCampaignUUID, msg.Campaign.UUID)
-			h.Set(models.EmailHeaderSubscriberUUID, msg.Subscriber.UUID)
+			out.Headers = textproto.MIMEHeader{}
+
+			if len(m.cfg.BounceEmail) > 0 {
+				out.From = m.cfg.BounceEmail
+				out.Headers.Set(models.EmailReturnPath, `<`+ m.cfg.BounceEmail +`>`)
+				out.Headers.Set(models.EmailHeaderFrom, `<`+ msg.from +`>`)
+				out.Headers.Set(models.EmailReplyTo, `<`+ msg.from +`>`)
+			}
+
+			out.Headers.Set(models.EmailHeaderCampaignUUID, msg.Campaign.UUID)
+			out.Headers.Set(models.EmailHeaderSubscriberUUID, msg.Subscriber.UUID)
 
 			// Attach List-Unsubscribe headers?
 			if m.cfg.UnsubHeader {
-				h.Set("List-Unsubscribe-Post", "List-Unsubscribe=One-Click")
-				h.Set("List-Unsubscribe", `<`+msg.unsubURL+`>`)
+				out.Headers.Set("List-Unsubscribe-Post", "List-Unsubscribe=One-Click")
+				out.Headers.Set("List-Unsubscribe", `<`+msg.unsubURL+`>`)
 			}
 
 			// Attach any custom headers.
 			if len(msg.Campaign.Headers) > 0 {
 				for _, set := range msg.Campaign.Headers {
 					for hdr, val := range set {
-						h.Add(hdr, val)
+						out.Headers.Add(hdr, val)
 					}
 				}
 			}
-
-			out.Headers = h
 
 			if err := m.messengers[msg.Campaign.Messenger].Push(out); err != nil {
 				m.logger.Printf("error sending message in campaign %s: subscriber %s: %v",

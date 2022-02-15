@@ -31,6 +31,7 @@ type Opt struct {
 	BounceAction string `json:"action"`
 
 	MailboxEnabled  bool        `json:"mailbox_enabled"`
+	MailboxEmail    string      `json:"mailbox_email"`
 	MailboxType     string      `json:"mailbox_type"`
 	Mailbox         mailbox.Opt `json:"mailbox"`
 	WebhooksEnabled bool        `json:"webhooks_enabled"`

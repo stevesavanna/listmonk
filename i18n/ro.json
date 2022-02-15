@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Interval de scanare",
     "settings.bounces.scanIntervalHelp": "Interval la care căsuța poștală de respingeri trebuie scanată pentru respingeri (s pentru secunde, m pentru minut).",
     "settings.bounces.sendgridKey": "Cheie SendGrid ",
+    "settings.bounces.email": "E-mail address for bounce tracking",
+    "settings.bounces.emailHelp": "Leave blank if you want to use the default 'from' e-mail for bounces as well.",
     "settings.bounces.type": "Tip",
     "settings.bounces.username": "Utilizator",
     "settings.confirmRestart": "Asigura-te ca difuzarea campaniilor este întreruptă. Repornești?",

@@ -76,6 +76,8 @@ const (
 	EmailHeaderMessageId   = "Message-Id"
 	EmailHeaderDeliveredTo = "Delivered-To"
 	EmailHeaderReceived    = "Received"
+	EmailReturnPath        = "Return-Path"
+	EmailReplyTo           = "Reply-To"
 
 	BounceTypeHard = "hard"
 	BounceTypeSoft = "soft"

@@ -85,6 +85,7 @@ type constants struct {
 	BounceWebhooksEnabled bool
 	BounceSESEnabled      bool
 	BounceSendgridEnabled bool
+	BounceEmail	          string
 }
 
 type notifTpls struct {
@@ -345,6 +346,21 @@ func initConstants() *constants {
 	c.BounceWebhooksEnabled = ko.Bool("bounce.webhooks_enabled")
 	c.BounceSESEnabled = ko.Bool("bounce.ses_enabled")
 	c.BounceSendgridEnabled = ko.Bool("bounce.sendgrid_enabled")
+
+	for _, b := range ko.Slices("bounce.mailboxes") {
+		if !b.Bool("enabled") {
+			continue
+		}
+
+		var boxOpt mailbox.Opt
+		if err := b.UnmarshalWithConf("", &boxOpt, koanf.UnmarshalConf{Tag: "json"}); err != nil {
+			lo.Fatalf("error reading bounce mailbox config: %v", err)
+		}
+
+		c.BounceEmail = b.String("email")
+		break
+	}
+
 	return &c
 }
 
@@ -399,6 +415,7 @@ func initCampaignManager(q *Queries, cs *constants, app *App) *manager.Manager {
 		SlidingWindowRate:     ko.Int("app.message_sliding_window_rate"),
 		ScanInterval:          time.Second * 5,
 		ScanCampaigns:         !ko.Bool("passive"),
+		BounceEmail:           cs.BounceEmail,
 	}, newManagerStore(q), campNotifCB, app.i18n, lo)
 }
 
@@ -598,6 +615,7 @@ func initBounceManager(app *App) *bounce.Manager {
 			lo.Fatalf("error reading bounce mailbox config: %v", err)
 		}
 
+		opt.MailboxEmail = b.String("email")
 		opt.MailboxType = b.String("type")
 		opt.MailboxEnabled = true
 		opt.Mailbox = boxOpt

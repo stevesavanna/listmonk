@@ -95,6 +95,7 @@ type settings struct {
 	BounceBoxes          []struct {
 		UUID          string `json:"uuid"`
 		Enabled       bool   `json:"enabled"`
+		Email         string `json:"email"`
 		Type          string `json:"type"`
 		Host          string `json:"host"`
 		Port          int    `json:"port"`

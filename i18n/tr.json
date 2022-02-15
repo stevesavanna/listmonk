@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Scan interval",
     "settings.bounces.scanIntervalHelp": "Interval at which the bounce mailbox should be scanned for bounces (s for second, m for minute).",
     "settings.bounces.sendgridKey": "SendGrid Key",
+    "settings.bounces.email": "E-mail address for bounce tracking",
+    "settings.bounces.emailHelp": "Leave blank if you want to use the default 'from' e-mail for bounces as well.",
     "settings.bounces.type": "Type",
     "settings.bounces.username": "Username",
     "settings.confirmRestart": "Çalışan kampanyaların duraklatıldığından emin ol. Yeniden başlat?",

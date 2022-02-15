@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Interval de 'scan'",
     "settings.bounces.scanIntervalHelp": "Intervalle auquel la boîte aux lettres de rebond doit être analysée pour les rebonds (s pour seconde, m pour minute).",
     "settings.bounces.sendgridKey": "Clés de SendGrid",
+    "settings.bounces.email": "E-mail address for bounce tracking",
+    "settings.bounces.emailHelp": "Leave blank if you want to use the default 'from' e-mail for bounces as well.",
     "settings.bounces.type": "Type",
     "settings.bounces.username": "Identifiant",
     "settings.confirmRestart": "Assurez-vous que les campagnes actives soient en pause. Redémarrer ?",

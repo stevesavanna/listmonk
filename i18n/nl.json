@@ -329,6 +329,8 @@
     "settings.bounces.scanInterval": "Scan interval",
     "settings.bounces.scanIntervalHelp": "Interval waarin de bounce mailbox gescanned moet worden voor bounces (s voor seconden, m voor minuten).",
     "settings.bounces.sendgridKey": "SendGrid sleutel",
+    "settings.bounces.email": "E-mail address for bounce tracking",
+    "settings.bounces.emailHelp": "Leave blank if you want to use the default 'from' e-mail for bounces as well.",
     "settings.bounces.type": "Type",
     "settings.bounces.username": "Gebruikersnaam",
     "settings.confirmRestart": "Zorg dat lopende campagnes gepauzeerd zijn. Herstarten?",
